@@ -1,0 +1,20 @@
+{
+    "usuarios": [
+        {
+            "nombre": "contenedor",
+            "estilo": "Pérez"
+        },
+        {
+            "nombre": "form",
+            "estilo": "García"
+        },
+        {
+            "nombre": "Pedro",
+            "estilo": "González"
+        },
+        {
+            "nombre": "Pedro",
+            "estilo": "González"
+        }
+    ]
+}

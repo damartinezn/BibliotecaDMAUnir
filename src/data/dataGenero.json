@@ -1,0 +1,29 @@
+{
+    "generos": [
+        {
+            "id": 1,
+            "nombre": "Ficción",
+            "descripcion":"descripcion descripcion Ficción"
+        },
+        {
+            "id": 2,
+            "nombre": "No ficción",
+            "descripcion":"descripcion descripcion No ficción"
+        },
+        {
+            "id": 3,
+            "nombre": "Ciencia ficción",
+            "descripcion":"descripcion descripcion Ciencia ficción"
+        },
+        {
+            "id": 4,
+            "nombre": "Terror",
+            "descripcion":"descripcion descripcion Terror"
+        },
+        {
+            "id": 5,
+            "nombre": "Romance",
+            "descripcion":"descripcion descripcion Romance"
+        }
+    ]
+}

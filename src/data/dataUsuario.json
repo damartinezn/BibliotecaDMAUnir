@@ -1,0 +1,52 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nombre": "Juan",
+            "apellido": "Pérez",
+            "correo": "juan.perez@example.com",
+            "edad": 35,
+            "direccion": "Calle 123, Ciudad",
+            "telefono": "555-1234",
+            "username":"usuario1",
+            "password":"admin",
+            "imagen":""
+        },
+        {
+            "id": 2,
+            "nombre": "María",
+            "apellido": "García",
+            "correo": "maria.garcia@example.com",
+            "edad": 28,
+            "direccion": "Avenida 456, Ciudad",
+            "telefono": "555-5678",
+            "username":"usuario2",
+            "password":"admin",
+            "imagen":""
+        },
+        {
+            "id": 3,
+            "nombre": "Pedro",
+            "apellido": "González",
+            "correo": "pedro.gonzalez@example.com",
+            "edad": 42,
+            "direccion": "Plaza 789, Ciudad",
+            "telefono": "555-9012",
+            "username":"usuario3",
+            "password":"admin",
+            "imagen":""
+        },
+        {
+            "id": 4,
+            "nombre": "Pedro",
+            "apellido": "González",
+            "correo": "pedro.gonzalez@example.com",
+            "edad": 42,
+            "direccion": "Plaza 789, Ciudad",
+            "telefono": "555-9012",
+            "username":"usuario4",
+            "password":"admin",
+            "imagen":""
+        }
+    ]
+}
