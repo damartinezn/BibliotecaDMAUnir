@@ -78,6 +78,164 @@
                     "descripcion":"descripcion descripcion Ficción"
                 }
             ]
+        },
+        {
+            "titulo": "El nombre del viento",
+            "autor": "Patrick Rothfuss",
+            "anioPublicacion": 2007,
+            "editorial": "Plaza & Janes",
+            "criticas": [
+                {
+                    "isbn": "17202020",
+                    "usuario": "usuario1",
+                    "puntuacion": 4.5,
+                    "comentario": "Me encantó este libro, la historia es fascinante y los personajes muy bien desarrollados."
+                },
+                {
+                    "isbn": "17202020",
+                    "usuario": "usuario2",
+                    "puntuacion": 3,
+                    "comentario": "No estuvo mal, pero esperaba algo más de la trama."
+                }
+            ],
+            "isbn13": "978-0-398-40615-9",
+            "isbn10": "0-7475-3269-8",
+            "imagen": "",
+            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "cantidad": 2,
+            "genero": [
+                {
+                    "id": 1,
+                    "nombre": "Ficción",
+                    "descripcion": "descripcion descripcion Ficción"
+                },
+                {
+                    "id": 2,
+                    "nombre": "No ficción",
+                    "descripcion": "descripcion descripcion No ficción"
+                }
+            ]
+        },
+        {
+            "titulo": "1984",
+            "autor": "George Orwell",
+            "anioPublicacion": 1949,
+            "editorial": "Secker & Warburg",
+            "criticas": [
+                {
+                    "isbn": "17202021",
+                    "usuario": "usuario3",
+                    "puntuacion": 5,
+                    "comentario": "Obra maestra de la literatura distópica. Muy recomendada."
+                },
+                {
+                    "isbn": "17202021",
+                    "usuario": "usuario4",
+                    "puntuacion": 2,
+                    "comentario": "No me gustó la narrativa, me resultó tediosa."
+                }
+            ],
+            "isbn13": "978-0-306-44577-8",
+            "isbn10": "0-7475-3269-8",
+            "imagen": "",
+            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "cantidad": 1,
+            "genero": [
+                {
+                    "id": 3,
+                    "nombre": "Ciencia ficción",
+                    "descripcion": "descripcion descripcion Ciencia ficción"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Romance",
+                    "descripcion": "descripcion descripcion Romance"
+                },
+                {
+                    "id": 1,
+                    "nombre": "Ficción",
+                    "descripcion":"descripcion descripcion Ficción"
+                }
+            ]
+        },
+        {
+            "titulo": "El nombre del viento",
+            "autor": "Patrick Rothfuss",
+            "anioPublicacion": 2007,
+            "editorial": "Plaza & Janes",
+            "criticas": [
+                {
+                    "isbn": "17202020",
+                    "usuario": "usuario1",
+                    "puntuacion": 4.5,
+                    "comentario": "Me encantó este libro, la historia es fascinante y los personajes muy bien desarrollados."
+                },
+                {
+                    "isbn": "17202020",
+                    "usuario": "usuario2",
+                    "puntuacion": 3,
+                    "comentario": "No estuvo mal, pero esperaba algo más de la trama."
+                }
+            ],
+            "isbn13": "999-8-398-40615-9",
+            "isbn10": "0-7475-3269-8",
+            "imagen": "",
+            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "cantidad": 2,
+            "genero": [
+                {
+                    "id": 1,
+                    "nombre": "Ficción",
+                    "descripcion": "descripcion descripcion Ficción"
+                },
+                {
+                    "id": 2,
+                    "nombre": "No ficción",
+                    "descripcion": "descripcion descripcion No ficción"
+                }
+            ]
+        },
+        {
+            "titulo": "1984",
+            "autor": "George Orwell",
+            "anioPublicacion": 1949,
+            "editorial": "Secker & Warburg",
+            "criticas": [
+                {
+                    "isbn": "17202021",
+                    "usuario": "usuario3",
+                    "puntuacion": 5,
+                    "comentario": "Obra maestra de la literatura distópica. Muy recomendada."
+                },
+                {
+                    "isbn": "17202021",
+                    "usuario": "usuario4",
+                    "puntuacion": 2,
+                    "comentario": "No me gustó la narrativa, me resultó tediosa."
+                }
+            ],
+            "isbn13": "958-0-306-44577-8",
+            "isbn10": "0-7475-3269-8",
+            "imagen": "",
+            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "cantidad": 1,
+            "genero": [
+                {
+                    "id": 3,
+                    "nombre": "Ciencia ficción",
+                    "descripcion": "descripcion descripcion Ciencia ficción"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Romance",
+                    "descripcion": "descripcion descripcion Romance"
+                },
+                {
+                    "id": 1,
+                    "nombre": "Ficción",
+                    "descripcion":"descripcion descripcion Ficción"
+                }
+            ]
         }
     ]
 }
