@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
 import Input from './Input';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import { consultaLibrosByIsbn13 } from '../services/LibrosService';
 
 export default function Libro() {
@@ -13,13 +13,15 @@ export default function Libro() {
     const [cantidad, setCantidad] = useState('');
     const [anioPublicacion, setAnioPublicacion] = useState('');
     const [editorial, setEditorial] = useState('');
+    const [nameButton, setButton] = useState('GUARDAR');
 
     let navigateClose = useNavigate();
-    const paramsEnviados = useParams();
+    let paramsEnviados = useParams();
+    let location = useLocation();
+    let currentPath = location.pathname;
 
     useEffect(() => {
-        console.log("ESTAMOS EN CARD ", paramsEnviados.item, paramsEnviados.lenght)
-        if ( paramsEnviados !== undefined && paramsEnviados.item !== undefined) {
+        if (paramsEnviados !== undefined && paramsEnviados.item !== undefined) {
             let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item);
             setTitulo(auxLibro[0].titulo);
             setAutor(auxLibro[0].autor);
@@ -29,10 +31,10 @@ export default function Libro() {
             setCantidad(auxLibro[0].cantidad);
             setAnioPublicacion(auxLibro[0].anioPublicacion);
             setEditorial(auxLibro[0].editorial);
-            
         } else {
             valorNulos();
         }
+        cambiarNameButton();
     }, [paramsEnviados]);
 
     const handleTituloChange = (event) => {
@@ -74,7 +76,7 @@ export default function Libro() {
         event.preventDefault();
     };
 
-    const valorNulos=()=>{
+    const valorNulos = () => {
         setTitulo("");
         setAutor("");
         setIsbn13("");
@@ -83,6 +85,18 @@ export default function Libro() {
         setCantidad("");
         setAnioPublicacion("");
         setEditorial("");
+    }
+
+    const cambiarNameButton = () => {
+        if (currentPath) {
+            if (currentPath.indexOf('edit') !== -1) {
+                setButton('Editar');
+            } else if (currentPath.indexOf('delete') !== -1) {
+                setButton('Eliminar');
+            } else if (currentPath.indexOf('/save') !== -1) {
+                setButton('Guardar');
+            }
+        }
     }
 
     return (
@@ -116,12 +130,12 @@ export default function Libro() {
                         <textarea className="form-control" id="editorial" rows="2" value={editorial} onChange={handleEditorialChange} required ></textarea>
                     </div>
                     <div className="d-grid gap-2 col-6 mx-auto mt-4">
-                        <Boton type="submit" label="Guardar" clase='btn btn-sm btn-secondary'></Boton>
+                        <Boton type="submit" label={nameButton} clase={nameButton == 'Guardar' ? 'btn btn-sm btn-secondary':nameButton == 'Editar' ? 'btn btn-sm btn-warning':'btn btn-sm btn-danger'}></Boton>
                     </div>
                 </div>
             </form>
             <div className="d-grid gap-2 col-2 mt-4">
-                <Boton type="close" label="Cancelar" clase='btn btn-sm btn-warning' onClick={() => navigateClose("/libro")}></Boton>
+                <Boton type="close" label="Cancelar" clase='btn btn-sm btn-primary' onClick={() => navigateClose("/libro")}></Boton>
             </div>
         </div>
     )

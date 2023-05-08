@@ -1,4 +1,10 @@
-.imagenMenu{
+.imagenMenu {
     width: 15px;
     height: 15px;
+}
+
+.my-component {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
 }

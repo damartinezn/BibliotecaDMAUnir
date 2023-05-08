@@ -15,6 +15,7 @@ export const BibliotecaRouter = () => {
                 <Route exact path="/libro" element={<ListaLibros />} />
                 <Route exact path="/libro/save" element={<Libro />} />
                 <Route exact path="/libro/edit/:item" element={<Libro />} />
+                <Route exact path="/libro/delete/:item" element={<Libro />} />
                 <Route caseSensitive path="/login/" element={<Login />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>

@@ -13,11 +13,15 @@ export default function Libros() {
         console.log(libros)
     }, []);
 
-    const handleNavigation = ( item) => {
-        console.log(item)
-        // Utiliza el objeto navigate con los parámetros en la URL
+    const handleEditNavigation = ( item) => {
         if (item !== undefined) {
             navigateEditLibro(`/libro/edit/${item}`);
+        }
+    }
+
+    const handleDeleteNavigation = ( item) => {
+        if (item !== undefined) {
+            navigateEditLibro(`/libro/delete/${item}`);
         }
     }
 
@@ -43,8 +47,8 @@ export default function Libros() {
                             <td>{item.autor}</td>
                             <td>{item.cantidad}</td>
                             <td>
-                                <Boton type="submit" label="Editar" clase='btn btn-sm btn-primary m-2' onClick={() =>handleNavigation(item.isbn13)} ></Boton>
-                                <Boton type="submit" label="Eliminar" clase='btn  btn-sm btn-danger m-2'></Boton>
+                                <Boton type="submit" label="Editar" clase='btn btn-sm btn-primary m-2' onClick={() =>handleEditNavigation(item.isbn13)} ></Boton>
+                                <Boton type="submit" label="Eliminar" clase='btn  btn-sm btn-danger m-2' onClick={() =>handleDeleteNavigation(item.isbn13)} ></Boton>
                             </td>
                         </tr>
                     ))}
