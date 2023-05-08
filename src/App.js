@@ -1,11 +1,16 @@
-import Busqueda from './views/Busqueda';
-import Login from './views/Login';
+import { BibliotecaRouter } from './components/BibliotecaRouter';
+import Menu from './views/Menu';
 
 function App() {
   return (
-    <div className="v-100 bg-secondary bg-opacity-50 p-5">
-      <header className="container shadow-lg p-5 rounded text-center bg-light text-dark opacity-3">
-        <Busqueda></Busqueda>
+    <div>
+      <header>
+        <div className="v-100 bg-secondary bg-opacity-50 pb-5">
+          <Menu></Menu>
+          <div className="container shadow-lg p-5 mt-3 rounded text-center bg-light text-dark opacity-3">
+            <BibliotecaRouter></BibliotecaRouter>
+          </div>
+        </div>
       </header>
     </div>
   );
