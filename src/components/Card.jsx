@@ -22,6 +22,7 @@ export default function Card(props) {
                     title={item.titulo}
                     sipnosis={item.sipnosis}
                     autor={item.autor}
+                    isbn13={item.isbn13}
                     key={item.isbn13}></CardItem>
             ))}
         </div>

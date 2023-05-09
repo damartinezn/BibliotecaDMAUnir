@@ -5,7 +5,7 @@ import ListaLibros from "../views/ListaLibros";
 import Libro from "./Libro";
 import Login from "../views/Login";
 import Busqueda from "../views/Busqueda"
-import BusquedaControl from "./BusquedaControl";
+import AlquilarLibro from "./AlquilarLibro";
 
 export const BibliotecaRouter = () => {
     return (
@@ -16,6 +16,7 @@ export const BibliotecaRouter = () => {
                 <Route exact path="/libro/save" element={<Libro />} />
                 <Route exact path="/libro/edit/:item" element={<Libro />} />
                 <Route exact path="/libro/delete/:item" element={<Libro />} />
+                <Route exact path="/libro/:item" element={<AlquilarLibro />} />
                 <Route caseSensitive path="/login/" element={<Login />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
