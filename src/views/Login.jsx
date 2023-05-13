@@ -52,7 +52,7 @@ export default function Login() {
     }
 
     useEffect(() => {
-        let valor = Boolean(sessionStorage.getItem("login"));
+        let valor = sessionStorage.getItem("login") === 'true' ? true: false;
         setLogin(valor);
         setAlerta(valor);
         console.log('54566546456  464 546 ', (logueado == false), logueado)

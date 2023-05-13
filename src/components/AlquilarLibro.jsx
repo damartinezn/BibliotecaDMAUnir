@@ -14,8 +14,14 @@ export default function AlquilarLibro() {
     const [cantidad, setCantidad] = useState('');
     const [editorial, setEditorial] = useState('');
     const [mensaje, setMensaje] = useState(undefined);
-
+    const [logueado, setLogin] = useState(false);
+    const [mensajeDos, setMensajeDos] = useState(false);
     let paramsEnviados = useParams();
+
+    useEffect(() => {
+        let valor = sessionStorage.getItem("login") === 'true' ? true : false;
+        setLogin(valor)
+    }, []);
 
     useEffect(() => {
         if (paramsEnviados !== undefined && paramsEnviados.item !== undefined) {
@@ -33,8 +39,12 @@ export default function AlquilarLibro() {
 
 
     const handleSubmit = (event) => {
-        let random = Math.floor(Math.random() * 10) + 1;
-        setMensaje((random % 2 === 0 ? true: false));
+        if (logueado) {
+            let random = Math.floor(Math.random() * 10) + 1;
+            setMensaje((random % 2 === 0 ? true : false));
+        }else{
+            setMensajeDos(true)
+        }
         event.preventDefault();
     };
 
@@ -72,9 +82,12 @@ export default function AlquilarLibro() {
                         <Boton type="submit" label='Confirmar' clase='btn btn-sm btn-secondary'></Boton>
                     </div>
                     {
-                        mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje='Se realizó el alquiler del libro !! '></Alertas> 
-                        : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje='Error al alquilar el libro !! '></Alertas> : <></>
-                    }   
+                        mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje='Se realizó el alquiler del libro !! '></Alertas>
+                            : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje='Error al alquilar el libro !! '></Alertas> : <></>
+                    }
+                    {
+                        mensajeDos ? <Alertas clase='alert alert-warning m-1 p-1' mensaje='No inicio sesión !! '></Alertas> : <></>
+                    }
                 </div>
             </form>
             <div className="d-grid gap-2 col-2 mt-4">

@@ -12,7 +12,7 @@ export default function Menu() {
     };
 
     useEffect(() => {
-        let valor = sessionStorage.getItem("login");
+        let valor = sessionStorage.getItem("login") === 'true' ? true: false;
         setLogin(valor)
     }, []);
 
