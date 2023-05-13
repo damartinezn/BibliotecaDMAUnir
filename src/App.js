@@ -1,11 +1,9 @@
-import { AuthProvider } from './components/AuthProvider';
 import { BibliotecaRouter } from './components/BibliotecaRouter';
 import Menu from './views/Menu';
 
 function App() {
   return (
     <div>
-      <AuthProvider >
         <header>
           <div className="v-100 bg-secondary bg-opacity-50 pb-5">
             <Menu></Menu>
@@ -14,7 +12,6 @@ function App() {
             </div>
           </div>
         </header>
-      </AuthProvider>
     </div>
   );
 }

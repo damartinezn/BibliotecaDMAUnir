@@ -6,19 +6,14 @@ export default function Menu() {
     const [logueado, setLogin] = useState(false);
 
     const handleLogout = (event) => {
-        console.log('TEST     ---------------')
         // Actualizar el estado de autenticación al hacer logout
         sessionStorage.setItem("login", false);
-        //console.log(isAuthenticated)
-        console.log('TEST     ---------------')
+        event.preventDefault();
     };
 
     useEffect(() => {
-        console.log('*************************/*******************')
-        // Update the state
         let valor = sessionStorage.getItem("login");
         setLogin(valor)
-        console.log(valor , ' --------------------------')
     }, []);
 
     return (
@@ -36,7 +31,7 @@ export default function Menu() {
                             </li>
                         </ul>
                         <span className="navbar-text">
-                            {logueado == true  ?
+                            {logueado === true ?
                                 <Boton type="submit"
                                     label='Cerrar Sesión'
                                     clase='btn btn-sm btn-outline-primary p-0 text-dark nav-link'
