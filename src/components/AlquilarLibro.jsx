@@ -1,8 +1,10 @@
 import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
-import {  useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { consultaLibrosByIsbn13 } from '../services/LibrosService';
 import Imagen from './Imagen';
+import { NavLink } from 'react-router-dom';
+import Alertas from './Alertas';
 
 export default function AlquilarLibro() {
     const [titulo, setTitulo] = useState('');
@@ -11,9 +13,8 @@ export default function AlquilarLibro() {
     const [sipnosis, setSipnosis] = useState('');
     const [cantidad, setCantidad] = useState('');
     const [editorial, setEditorial] = useState('');
-    const [imagen, setImagen] = useState('');
+    const [mensaje, setMensaje] = useState(undefined);
 
-    let navigateClose = useNavigate();
     let paramsEnviados = useParams();
 
     useEffect(() => {
@@ -25,7 +26,6 @@ export default function AlquilarLibro() {
             setSipnosis(auxLibro[0].sipnosis);
             setCantidad(auxLibro[0].cantidad);
             setEditorial(auxLibro[0].editorial);
-            setImagen(auxLibro[0].imagen);
         } else {
             valorNulos();
         }
@@ -33,6 +33,8 @@ export default function AlquilarLibro() {
 
 
     const handleSubmit = (event) => {
+        let random = Math.floor(Math.random() * 10) + 1;
+        setMensaje((random % 2 === 0 ? true: false));
         event.preventDefault();
     };
 
@@ -43,16 +45,16 @@ export default function AlquilarLibro() {
         setSipnosis("");
         setCantidad("");
         setEditorial("");
-        setImagen("");
     }
 
     return (
         <div className=''>
             <form className='row g-3 needs-validation text-start' onSubmit={handleSubmit}>
                 <div className='row'>
+                    <div className="col-12 text-center">
+                        <label htmlFor={titulo} className="form-label fw-bolder fs-2">{titulo}</label>
+                    </div>
                     <div className="col-6">
-                        <label htmlFor={titulo} className="form-label"><span className='fw-bolder'>Titulo: </span>{titulo}</label>
-                        <div></div>
                         <label htmlFor={autor} className="form-label"><span className='fw-bolder'>Autor: </span>{autor}</label>
                         <div></div>
                         <label htmlFor={isbn13} className="form-label"><span className='fw-bolder'>Isbn13: </span>{isbn13}</label>
@@ -69,10 +71,14 @@ export default function AlquilarLibro() {
                     <div className="d-grid gap-2 col-6 mx-auto mt-4">
                         <Boton type="submit" label='Confirmar' clase='btn btn-sm btn-secondary'></Boton>
                     </div>
+                    {
+                        mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje='Se realizó el alquiler del libro !! '></Alertas> 
+                        : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje='Error al alquilar el libro !! '></Alertas> : <></>
+                    }   
                 </div>
             </form>
             <div className="d-grid gap-2 col-2 mt-4">
-                <Boton type="close" label="Cancelar" clase='btn btn-sm btn-primary' onClick={() => navigateClose("/")}></Boton>
+                <NavLink className='btn btn-sm btn-outline-primary' to="/">Regresar</NavLink>
             </div>
         </div>
     )

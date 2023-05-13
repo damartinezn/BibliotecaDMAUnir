@@ -1,17 +1,8 @@
 import React from 'react'
 import Imagen from './Imagen'
-import Boton from './Boton'
-import { useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 export default function CardItem(props) {
-
-    let navigateAlquilarLibro = useNavigate();
-    
-    const handleAlquilarNavigation = (item) => {
-        if (item !== undefined) {
-            navigateAlquilarLibro(`/libro/${item}`);
-        }
-    }
 
     return (
         <div className="col shadow-sm p-2 mb-1 bg-body-tertiary rounded">
@@ -26,7 +17,11 @@ export default function CardItem(props) {
                     <div className='text-start m-2'>
                         <small className="text-body-secondary fs-6"><span className='fw-bolder text-dark'>Isbn13: </span>{props.isbn13}</small>
                     </div>
-                    <Boton label="Alquilar" clase='btn btn-outline-primary' onClick={() =>handleAlquilarNavigation(props.isbn13)}></Boton>
+                    <div>
+                        <span className='fw-bolder text-dark fs-5'>{props.cantidad}</span>
+                    </div>
+                    <NavLink className={props.cantidad != 0 ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'}
+                                to={props.cantidad != 0? `/libro/${props.isbn13}`:''}  >Alquilar</NavLink>
                 </div>
             </div>
         </div>

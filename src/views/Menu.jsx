@@ -1,7 +1,25 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 import '../styles/StyleImagen.css';
+import Boton from '../components/Boton';
 
 export default function Menu() {
+    const [logueado, setLogin] = useState(false);
+
+    const handleLogout = (event) => {
+        console.log('TEST     ---------------')
+        // Actualizar el estado de autenticación al hacer logout
+        sessionStorage.setItem("login", false);
+        //console.log(isAuthenticated)
+        console.log('TEST     ---------------')
+    };
+
+    useEffect(() => {
+        console.log('*************************/*******************')
+        // Update the state
+        let valor = sessionStorage.getItem("login");
+        setLogin(valor)
+        console.log(valor , ' --------------------------')
+    }, []);
 
     return (
         <div>
@@ -16,10 +34,16 @@ export default function Menu() {
                             <li className="nav-item">
                                 <a className="nav-link" href="/libro">Lista Libros</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/login">Login</a>
-                            </li>
                         </ul>
+                        <span className="navbar-text">
+                            {logueado == true  ?
+                                <Boton type="submit"
+                                    label='Cerrar Sesión'
+                                    clase='btn btn-sm btn-outline-primary p-0 text-dark nav-link'
+                                    onClick={handleLogout}></Boton> :
+                                <a className="nav-link" href="/login">Login</a>
+                            }
+                        </span>
                     </div>
                 </div>
             </nav>

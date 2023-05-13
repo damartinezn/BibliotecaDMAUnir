@@ -1,14 +1,14 @@
 {
     "usuarios": [
-        {
+        { 
             "id": 1,
             "nombre": "Juan",
             "apellido": "Pérez",
-            "correo": "juan.perez@example.com",
+            "correo": "admin@example.com",
             "edad": 35,
             "direccion": "Calle 123, Ciudad",
             "telefono": "555-1234",
-            "username":"usuario1",
+            "username":"admin",
             "password":"admin",
             "imagen":""
         },

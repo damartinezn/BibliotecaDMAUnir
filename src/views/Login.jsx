@@ -1,12 +1,17 @@
-import { React, useState } from 'react'
+import { React, useContext, useState } from 'react'
 import Input from '../components/Input'
 import Imagen from '../components/Imagen';
 import Boton from '../components/Boton';
+import { consultaLoginUser } from '../services/LoginService';
+import { useNavigate } from 'react-router';
+import Alertas from '../components/Alertas';
 
 export default function Login() {
     const [nombre, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [alerta, setAlerta] = useState(false);
+    let navigateLogin = useNavigate();
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -21,12 +26,23 @@ export default function Login() {
         event.preventDefault();
     };
     const handleSubmit = (event) => {
-        console.log(nombre, password, email)
+        let auxLogin = consultaLoginUser(nombre, password, email);
+        console.table(auxLogin[0], Object.keys(auxLogin).length)
+        try {
+            auxLogin !== null || auxLogin !== undefined ? sessionStorage.setItem('login', true) : sessionStorage.setItem('login', false);
+            setAlerta(false);
+            navigateLogin("/")
+        } catch (error) {
+            setName('');
+            setPassword('');
+            setEmail('');
+            sessionStorage.setItem('login', false);
+            setAlerta(true);
+        }
         event.preventDefault();
-        // hacer algo con los datos
     };
     return (
-        <div className='container text-center row'>
+        <div className='text-center row p-5'>
             <div className='col'>
                 <Imagen ruta='biblioteca.png' alt='imagen login' clase='img-fluid' />
             </div>
@@ -38,6 +54,9 @@ export default function Login() {
                     <Boton type="submit" label="Enviar" clase='btn btn-primary'></Boton>
                 </form>
             </div>
+            {
+                alerta ? <Alertas clase='alert alert-warning m-2 p-1' mensaje='No está registrado en el sistema !! '></Alertas> : <></>
+            }
         </div>
     )
 }
