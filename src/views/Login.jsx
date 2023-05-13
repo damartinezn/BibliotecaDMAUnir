@@ -30,6 +30,7 @@ export default function Login() {
         sessionStorage.setItem('login', false);
         setLogin(!logueado);
         setAlerta(false);
+        navigateLogin("/")
         event.preventDefault();
     }
 
@@ -55,7 +56,6 @@ export default function Login() {
         let valor = sessionStorage.getItem("login") === 'true' ? true: false;
         setLogin(valor);
         setAlerta(valor);
-        console.log('54566546456  464 546 ', (logueado == false), logueado)
     },[])
 
     const formLogueado = () => {
@@ -96,7 +96,7 @@ export default function Login() {
     return (
         <>
             {
-                logueado == false  ? formLogueado()
+                logueado === false  ? formLogueado()
                     : formNotLogueado()
             }
         </>
