@@ -12,6 +12,10 @@
     border-radius: 20%;
 }
 
+.nameUser{
+    margin-right: 5%;
+}
+
 .image-container {
     position: relative;
 }

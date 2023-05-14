@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useContext, useEffect, useState } from 'react'
 import Input from '../components/Input'
 import Imagen from '../components/Imagen';
 import Boton from '../components/Boton';
@@ -6,6 +6,7 @@ import { consultaLoginUser } from '../services/LoginService';
 import { useNavigate } from 'react-router';
 import Alertas from '../components/Alertas';
 import '../styles/StyleImagen.css'
+import { GeoContext } from '../components/GeoContext';
 
 export default function Login() {
     const [nombre, setName] = useState('');
@@ -14,11 +15,14 @@ export default function Login() {
     const [alerta, setAlerta] = useState(false);
     const [logueado, setLogin] = useState(false);
     let navigateLogin = useNavigate();
+    const { value, changeValue } = useContext(GeoContext);
 
     const handleSubmit = (event) => {
         let auxLogin = consultaLoginUser(nombre, password, email);
-        try {
+        try { 
             Object.keys(auxLogin).length > 0 ? isUser() : notIsUser();
+            changeValue(auxLogin[0].nombre);
+            window.sessionStorage.setItem('loginInfo', JSON.stringify(auxLogin));
         } catch (error) {
             notIsUser()
         }
@@ -29,6 +33,8 @@ export default function Login() {
     const handleSubmitLogout = (event) => {
         resetValores();
         sessionStorage.setItem('login', false);
+        window.sessionStorage.removeItem('loginInfo');
+        changeValue('Bienvenido ');
         setLogin(!logueado);
         setAlerta(false);
         navigateLogin("/")
@@ -57,7 +63,8 @@ export default function Login() {
         let valor = sessionStorage.getItem("login") === 'true' ? true : false;
         setLogin(valor);
         setAlerta(valor);
-    }, [])
+        console.log(value)
+    }, [value])
 
     const formLogueado = () => {
         return <div className='text-center row p-5'>

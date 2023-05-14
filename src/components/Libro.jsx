@@ -87,7 +87,7 @@ export default function Libro() {
         }
         if (!logueado) {
             setMensaje(true);
-            setMensajeError('No inició sesión para agregar nuevos libros !!  ');
+            setMensajeError('No inició sesión para realizar una acción con los libros !!  ');
         }
         eliminarMensaje();
         event.preventDefault();
