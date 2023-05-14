@@ -2,9 +2,9 @@ import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
 import { useNavigate, useParams } from 'react-router';
 import { alquilarLibro, consultaLibrosByIsbn13 } from '../services/LibrosService';
-import Imagen from './Imagen';
 import { NavLink } from 'react-router-dom';
 import Alertas from './Alertas';
+import Imagen from './Imagen';
 
 export default function AlquilarLibro() {
     const [titulo, setTitulo] = useState('');
@@ -12,6 +12,7 @@ export default function AlquilarLibro() {
     const [isbn13, setIsbn13] = useState('');
     const [sipnosis, setSipnosis] = useState('');
     const [cantidad, setCantidad] = useState('');
+    const [imagen, setImagen] = useState('');
     const [editorial, setEditorial] = useState('');
     const [mensaje, setMensaje] = useState(undefined);
     const [logueado, setLogin] = useState(false);
@@ -34,6 +35,7 @@ export default function AlquilarLibro() {
             setSipnosis(auxLibro[0].sipnosis);
             setCantidad(auxLibro[0].cantidad);
             setEditorial(auxLibro[0].editorial);
+            setImagen(auxLibro[0].imagen)
         } else {
             valorNulos();
         }
@@ -75,7 +77,7 @@ export default function AlquilarLibro() {
     }
 
     return (
-        <div className=''>
+        <div>
             <form className='row g-3 needs-validation text-start' onSubmit={handleConfirmarAlquilerSubmit}>
                 <div className='row'>
                     <div className="col-12 text-center">
@@ -92,21 +94,21 @@ export default function AlquilarLibro() {
                         <div></div>
                         <label htmlFor={editorial} className="form-label"><span className='fw-bolder'>Editorial: </span>{editorial}</label>
                     </div>
-                    <div className="col-6 text-center">
-                        <Imagen ruta='iconDos.png' alt='imagen login' clase='img-thumbnail' />
+                    <div className="col-6">
+                        <Imagen ruta={imagen} alt={autor} clase='imagenAlquilar' />
                     </div>
-                    <div className="d-grid gap-2 col-6 mx-auto mt-4">
-                        <Boton type="submit" label='Confirmar' clase={cantidad !== 0 ? 'btn btn-sm btn-secondary' : 'btn btn-sm btn-warning'}></Boton>
-                    </div>
-                    {
-                        mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje={mensajeErrores}></Alertas>
-                            : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje={mensajeErrores}></Alertas> : <></>
-                    }
-                    {
-                        mensajeDos ? <Alertas clase='alert alert-warning m-1 p-1' mensaje={mensajeErrores}></Alertas> : <></>
-                    }
+                </div>
+                <div className="d-grid gap-2 col-6 mx-auto mt-4">
+                    <Boton type="submit" label='Confirmar' clase={cantidad !== 0 ? 'btn btn-sm btn-secondary' : 'btn btn-sm btn-warning'}></Boton>
                 </div>
             </form>
+            {
+                mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje={mensajeErrores}></Alertas>
+                    : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje={mensajeErrores}></Alertas> : <></>
+            }
+            {
+                mensajeDos ? <Alertas clase='alert alert-warning m-1 p-1' mensaje={mensajeErrores}></Alertas> : <></>
+            }
             <div className="d-grid gap-2 col-2 mt-4">
                 <NavLink className='btn btn-sm btn-outline-primary' to="/">Regresar</NavLink>
             </div>

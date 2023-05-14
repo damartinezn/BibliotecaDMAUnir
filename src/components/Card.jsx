@@ -18,7 +18,7 @@ export default function Card(props) {
     return (
         <div className="row row-cols-1 row-cols-md-3 g-4 ">
             {libros.map((item) => (
-                <CardItem imagen='biblioteca.png'
+                <CardItem imagen={item.imagen}
                     title={item.titulo}
                     sipnosis={item.sipnosis}
                     autor={item.autor}

@@ -21,7 +21,7 @@
             ],
             "isbn13": "978-0-306-40615-7",
             "isbn10": "0-7475-3269-8",
-            "imagen": "",
+            "imagen": "https://th.bing.com/th/id/R.2ec10353f836b2ce376445beab218e54?rik=VnY6O6yXU%2f6H%2fw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-i4ql5KR1B40%2fThXrCMGKEYI%2fAAAAAAAAAB4%2f1AaizJIn1S8%2fs1600%2fel-nombre-del-viento2-jpg.jpg&ehk=3pxmwRTQZeb%2bFaCGKK7xGv0mV96BDxcnlj1qnH8ub5w%3d&risl=&pid=ImgRaw&r=0",
             "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
             "cantidad": 2,
             "genero": [
@@ -58,7 +58,7 @@
             ],
             "isbn13": "978-0-306-40615-8",
             "isbn10": "0-7475-3269-8",
-            "imagen": "",
+            "imagen": "https://th.bing.com/th/id/R.ad02e140eb8c0dbbfda7216ed2f7fec7?rik=9yB30PGtfmcU8A&pid=ImgRaw&r=0",
             "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
             "cantidad": 0,
             "genero": [
@@ -80,9 +80,9 @@
             ]
         },
         {
-            "titulo": "El nombre del viento",
-            "autor": "Patrick Rothfuss",
-            "anioPublicacion": 2007,
+            "titulo": "El cuco de cristal",
+            "autor": "Javier Castillo",
+            "anioPublicacion": 2023,
             "editorial": "Plaza & Janes",
             "criticas": [
                 {
@@ -98,29 +98,24 @@
                     "comentario": "No estuvo mal, pero esperaba algo más de la trama."
                 }
             ],
-            "isbn13": "978-0-398-40615-9",
-            "isbn10": "0-7475-3269-8",
-            "imagen": "",
-            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "isbn13": "978-0-398-9999-9",
+            "isbn10": "0-7475-9999-8",
+            "imagen": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1664302643i/59813453.jpg",
+            "sipnosis": "Esta novela gira en torno a Cora Merlo, una joven residente de medicina que sufre un infarto de corazón que la obliga a recibir un implante. Días después de la complicada intervención, recibe la visita de una enigmática mujer que le ofrece la oportunidad de pasar unos días en Steelville, una pequeña localidad interior, para conocer la vida de su donante de corazón, su hijo Charles. Cora accede a la propuesta y se adentra en un lugar lleno de misterios, donde comienzan a ocurrir cosas extrañas como la desaparición de un bebé.",
             "cantidad": 2,
             "genero": [
                 {
-                    "id": 1,
-                    "nombre": "Ficción",
-                    "descripcion": "descripcion descripcion Ficción"
-                },
-                {
-                    "id": 2,
-                    "nombre": "No ficción",
-                    "descripcion": "descripcion descripcion No ficción"
+                    "id": 6,
+                    "nombre": "Novela",
+                    "descripcion": "Novela Negra"
                 }
             ]
         },
         {
-            "titulo": "1984",
-            "autor": "George Orwell",
-            "anioPublicacion": 1949,
-            "editorial": "Secker & Warburg",
+            "titulo": "Las formas del querer",
+            "autor": "Inés Rodrigo",
+            "anioPublicacion": 2022,
+            "editorial": "España",
             "criticas": [
                 {
                     "isbn": "17202021",
@@ -135,11 +130,11 @@
                     "comentario": "No me gustó la narrativa, me resultó tediosa."
                 }
             ],
-            "isbn13": "978-0-306-44577-8",
-            "isbn10": "0-7475-3269-8",
-            "imagen": "",
-            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
-            "cantidad": 1,
+            "isbn13": "978-0-306-46677-8",
+            "isbn10": "0-7475-3119-8",
+            "imagen": "https://www.aceprensa.com/wp-content/uploads/2022/03/Las-formas-del-querer.jpg",
+            "sipnosis": "Galardonada con el Premio Nadal 2022, esta novela se adentra en las posibles maneras de amar. Después de la fortuita muerte de sus abuelos, Noray regresa a su pueblo natal para refugiarse del ritmo de vida que, ahora, parece haberse detenido. Allí, decide enfrentar uno de sus mayores retos: escribir la novela que lleva años aplazando y que cuenta la historia de su propia familia. En el proceso, Noray va descubriendo quién es. Sin saberlo, la novela llegará a Ismael, el amor de su vida, quien lee cada avance de la historia desde la cama de un hospital.",
+            "cantidad": 5,
             "genero": [
                 {
                     "id": 3,
@@ -152,16 +147,16 @@
                     "descripcion": "descripcion descripcion Romance"
                 },
                 {
-                    "id": 1,
-                    "nombre": "Ficción",
-                    "descripcion":"descripcion descripcion Ficción"
+                    "id": 6,
+                    "nombre": "Novela",
+                    "descripcion": "Novela Negra"
                 }
             ]
         },
         {
-            "titulo": "El nombre del viento",
-            "autor": "Patrick Rothfuss",
-            "anioPublicacion": 2007,
+            "titulo": "El Principito",
+            "autor": "Antoine de Saint-Exupéry",
+            "anioPublicacion": 1943,
             "editorial": "Plaza & Janes",
             "criticas": [
                 {
@@ -177,10 +172,10 @@
                     "comentario": "No estuvo mal, pero esperaba algo más de la trama."
                 }
             ],
-            "isbn13": "999-8-398-40615-9",
-            "isbn10": "0-7475-3269-8",
-            "imagen": "",
-            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "isbn13": "999-8-998-40615-9",
+            "isbn10": "0-7995-3269-8",
+            "imagen": "https://4.bp.blogspot.com/-ItTHm0XbZQ0/V3FO-peI0kI/AAAAAAAAETs/lE95xp9QcOgzIGicCojUOmMTVE4FFLf3wCLcB/s640/13501958_1211253632252204_8100328413881954605_n.png",
+            "sipnosis": "El principito es una eminencia de la literatura universal. Un libro digno de ser disfrutado tanto en la edad infantil como adulta, ya que esconde profundas enseñanzas de vida que difícilmente se olvidan. Esta fábula cuenta la historia de un aviador, el narrador del libro, que se encuentra perdido en el desierto después de que su nave se haya averiado. Entonces conoce al Principito, quien viene de un reino lejano. Este pequeño príncipe comienza a plantear una serie de cuestiones al adulto a partir de un dibujo que le pide que realice.",
             "cantidad": 2,
             "genero": [
                 {
@@ -189,16 +184,16 @@
                     "descripcion": "descripcion descripcion Ficción"
                 },
                 {
-                    "id": 2,
-                    "nombre": "No ficción",
-                    "descripcion": "descripcion descripcion No ficción"
+                    "id": 3,
+                    "nombre": "Ciencia ficción",
+                    "descripcion": "descripcion descripcion Ciencia ficción"
                 }
             ]
         },
         {
-            "titulo": "1984",
-            "autor": "George Orwell",
-            "anioPublicacion": 1949,
+            "titulo": "Don Quijote de La Mancha",
+            "autor": "Miguel de Cervantes",
+            "anioPublicacion": 1605,
             "editorial": "Secker & Warburg",
             "criticas": [
                 {
@@ -216,19 +211,14 @@
             ],
             "isbn13": "958-0-306-44577-8",
             "isbn10": "0-7475-3269-8",
-            "imagen": "",
-            "sipnosis": "Tres hermanos, separados por una tragedia familiar, se reúnen después de años para cumplir con el último deseo de su padre: encontrar juntos el lugar donde se conocieron. A lo largo de su viaje, deberán enfrentarse a sus secretos más oscuros y a la verdad detrás de su separación. Una historia conmovedora sobre el amor, la familia y la búsqueda de la redención.",
+            "imagen": "https://th.bing.com/th/id/R.f3760c5139cfa27f6e445e539905f2d8?rik=1St%2bj%2faC6s2Nqw&pid=ImgRaw&r=0",
+            "sipnosis": "Esta novela es un clásico de la literatura universal que tiene dos partes: El ingenioso hidalgo don Quijote de la Mancha (1605) y El ingenioso caballero don Quijote de la Mancha (1615). Es una obra extensa que, al menos, hay que leer una vez en la vida. Un libro que invita al lector a introducirse en un mundo de fantasía, de la mano de su protagonista, y que supone un reflejo de la sociedad del siglo XVI. También es un canto a la libertad. La novela narra las aventuras y desventuras de Don Quijote, un caballero andante, y su escudero y fiel amigo Sancho Panza.",
             "cantidad": 1,
             "genero": [
                 {
                     "id": 3,
                     "nombre": "Ciencia ficción",
                     "descripcion": "descripcion descripcion Ciencia ficción"
-                },
-                {
-                    "id": 5,
-                    "nombre": "Romance",
-                    "descripcion": "descripcion descripcion Romance"
                 },
                 {
                     "id": 1,

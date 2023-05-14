@@ -1,5 +1,6 @@
 import { BibliotecaRouter } from './components/BibliotecaRouter';
 import Menu from './views/Menu';
+import  './styles/StyleImagen.css';
 
 function App() {
   return (
