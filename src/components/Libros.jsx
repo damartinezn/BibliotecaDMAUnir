@@ -10,7 +10,6 @@ export default function Libros() {
 
     useEffect(() => {
         setLibros(consultaLibros)
-        console.log(libros)
     }, []);
 
     const handleEditNavigation = ( item) => {

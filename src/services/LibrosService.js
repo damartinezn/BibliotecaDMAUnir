@@ -36,7 +36,6 @@ export const alquilarLibro = (isbn13Alquilar) => {
             librosRecuperados[index].cantidad = (librosRecuperados[index].cantidad - 1)
         }
     }
-    console.table(librosRecuperados);
 }
 
 
