@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import Input from './Input'
 import Boton from './Boton';
 import InputSelect from './InputSelect';
-import { consultaLibrosNombre, filtraCategoriaLibros } from '../services/LibrosService';
+import { consultaLibrosNombre } from '../services/LibrosService';
 import Card from './Card';
 import Alertas from './Alertas';
 
@@ -17,7 +17,6 @@ export default function BusquedaControl() {
     const [nombre, setName] = useState('');
     const [contador, setContador] = useState(0);
     const [selectorUno, setSelectorUno] = useState("");
-    const [generos, setLibros] = useState([]);
     const [libros, setLibrosFiltrados] = useState([]);
 
     const handleNameChange = (event) => {
@@ -76,10 +75,10 @@ export default function BusquedaControl() {
                 </div>
                 Resultado: {libros.length}
                 <>
-                    {libros.length == 0 && contador > 0 ? <Alertas clase='alert alert-primary p-1' mensaje='No se encontraron coincidencias !! '></Alertas> : <></>}
+                    {libros.length === 0 && contador > 0 ? <Alertas clase='alert alert-primary p-1' mensaje='No se encontraron coincidencias !! '></Alertas> : <></>}
                 </>
             </div>
-            <Card libros={libros}></Card>
+            <Card libros={libros} ></Card>
         </>
     )
 }

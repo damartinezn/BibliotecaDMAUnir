@@ -14,14 +14,7 @@ export default function CardItem(props) {
                     <small className="text-body-secondary fs-6"><span className='fw-bolder text-dark'>Autor: </span>{props.autor}</small>
                 </div>
                 <div className="card-footer">
-                    <div className='text-start m-2'>
-                        <small className="text-body-secondary fs-6"><span className='fw-bolder text-dark'>Isbn13: </span>{props.isbn13}</small>
-                    </div>
-                    <div>
-                        <span className='fw-bolder text-dark fs-5'>{props.cantidad}</span>
-                    </div>
-                    <NavLink className={props.cantidad != 0 ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'}
-                                to={props.cantidad != 0? `/libro/${props.isbn13}`:''}  >Alquilar</NavLink>
+                    <NavLink className='btn btn-outline-primary' to={`/libro/${props.isbn13}`}  >Alquilar</NavLink>
                 </div>
             </div>
         </div>

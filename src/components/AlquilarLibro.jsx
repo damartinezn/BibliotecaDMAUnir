@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
-import { useParams } from 'react-router';
-import { consultaLibrosByIsbn13 } from '../services/LibrosService';
+import { useNavigate, useParams } from 'react-router';
+import { alquilarLibro, consultaLibrosByIsbn13 } from '../services/LibrosService';
 import Imagen from './Imagen';
 import { NavLink } from 'react-router-dom';
 import Alertas from './Alertas';
@@ -16,7 +16,9 @@ export default function AlquilarLibro() {
     const [mensaje, setMensaje] = useState(undefined);
     const [logueado, setLogin] = useState(false);
     const [mensajeDos, setMensajeDos] = useState(false);
+    const [mensajeErrores, setMensajeErrores] = useState('');
     let paramsEnviados = useParams();
+    let navigateLogin = useNavigate();
 
     useEffect(() => {
         let valor = sessionStorage.getItem("login") === 'true' ? true : false;
@@ -38,12 +40,27 @@ export default function AlquilarLibro() {
     }, [paramsEnviados]);
 
 
-    const handleSubmit = (event) => {
-        if (logueado) {
-            let random = Math.floor(Math.random() * 10) + 1;
-            setMensaje((random % 2 === 0 ? true : false));
-        }else{
-            setMensajeDos(true)
+    const handleConfirmarAlquilerSubmit = (event) => {
+        if (cantidad !== 0) {
+            if (logueado) {
+                try {
+                    alquilarLibro(isbn13);
+                    setMensaje(true);
+                    setMensajeErrores('Se realizó el alquiler del libro !!')
+                    setTimeout(() => {
+                        navigateLogin("/");
+                    }, 2000);
+                } catch (error) {
+                    setMensajeErrores('Ocurrió un error al realizar el proceso !!!');
+                    setMensaje(false);
+                }
+            } else {
+                setMensajeErrores('Debe iniciar sesión para realizar el alquiler de un libro   !!!');
+                setMensajeDos(true)
+            }
+        } else {
+            setMensajeErrores('No se tiene el libro en stock para alquilar, le invitamos a seleccionar otra opción ...');
+            setMensaje(false);
         }
         event.preventDefault();
     };
@@ -59,7 +76,7 @@ export default function AlquilarLibro() {
 
     return (
         <div className=''>
-            <form className='row g-3 needs-validation text-start' onSubmit={handleSubmit}>
+            <form className='row g-3 needs-validation text-start' onSubmit={handleConfirmarAlquilerSubmit}>
                 <div className='row'>
                     <div className="col-12 text-center">
                         <label htmlFor={titulo} className="form-label fw-bolder fs-2">{titulo}</label>
@@ -69,7 +86,7 @@ export default function AlquilarLibro() {
                         <div></div>
                         <label htmlFor={isbn13} className="form-label"><span className='fw-bolder'>Isbn13: </span>{isbn13}</label>
                         <div></div>
-                        <label htmlFor={cantidad} className="form-label"><span className='fw-bolder'>Disponible: </span>{cantidad}</label>
+                        <label htmlFor={cantidad} className="form-label"><span className={cantidad === 0 ? 'fw-bolder text-danger' : 'fw-bolder'}>Disponible: {cantidad}</span></label>
                         <div></div>
                         <label htmlFor={sipnosis} className="form-label"><span className='fw-bolder'>Sipnosis: </span>{sipnosis}</label>
                         <div></div>
@@ -79,14 +96,14 @@ export default function AlquilarLibro() {
                         <Imagen ruta='iconDos.png' alt='imagen login' clase='img-thumbnail' />
                     </div>
                     <div className="d-grid gap-2 col-6 mx-auto mt-4">
-                        <Boton type="submit" label='Confirmar' clase='btn btn-sm btn-secondary'></Boton>
+                        <Boton type="submit" label='Confirmar' clase={cantidad !== 0 ? 'btn btn-sm btn-secondary' : 'btn btn-sm btn-warning'}></Boton>
                     </div>
                     {
-                        mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje='Se realizó el alquiler del libro !! '></Alertas>
-                            : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje='Error al alquilar el libro !! '></Alertas> : <></>
+                        mensaje ? <Alertas clase='alert alert-success m-1 p-1' mensaje={mensajeErrores}></Alertas>
+                            : mensaje === false ? <Alertas clase='alert alert-warning m-1 p-1' mensaje={mensajeErrores}></Alertas> : <></>
                     }
                     {
-                        mensajeDos ? <Alertas clase='alert alert-warning m-1 p-1' mensaje='No inicio sesión !! '></Alertas> : <></>
+                        mensajeDos ? <Alertas clase='alert alert-warning m-1 p-1' mensaje={mensajeErrores}></Alertas> : <></>
                     }
                 </div>
             </form>

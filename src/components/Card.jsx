@@ -7,7 +7,7 @@ export default function Card(props) {
 
     useEffect(() => {
         console.log("ESTAMOS EN CARD", Object.keys(props.libros).length, props.libros)
-        if(Object.keys(props.libros).length ==  0 || Object.keys(props.libros).length ==  undefined){
+        if(Object.keys(props.libros).length ===  0 || Object.keys(props.libros).length ===  undefined){
             setLibros(consultaLibros)
         }else{
             setLibros([])
