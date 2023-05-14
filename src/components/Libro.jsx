@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
 import Input from './Input';
 import { useLocation, useNavigate, useParams } from 'react-router';
-import { agregarLibro, consultaLibrosByIsbn13 } from '../services/LibrosService';
+import { agregarLibro, consultaLibrosByIsbn13, editarLibro } from '../services/LibrosService';
 import Alertas from './Alertas';
 import Imagen from './Imagen';
 
@@ -52,7 +52,17 @@ export default function Libro() {
     const handleSubmit = (event) => {
         if (currentPath && logueado) {
             if (currentPath.indexOf('edit') !== -1) {
-                console.log('EDITAR');
+                if (validacionesForm()) {
+                    try {
+                        editarLibro(titulo, autor, isbn13, isbn10,
+                            imagen, sipnosis, parseInt(cantidad),
+                            parseInt(anioPublicacion), editorial, isbn13);
+                        rutaEventosConLibro('/libro');
+                    } catch (error) {
+                        setMensaje(true);
+                        setMensajeError('Ocurrió un error al editar el libro !!  ');
+                    }
+                }
             } else if (currentPath.indexOf('delete') !== -1) {
                 console.log('ELIMINAR');
             } else if (currentPath.indexOf('/save') !== -1) {
@@ -73,7 +83,7 @@ export default function Libro() {
             setMensaje(true);
             setMensajeError('No inició sesión para agregar nuevos libros !!  ');
         }
-        elimnarMensaje();
+        eliminarMensaje();
         event.preventDefault();
     };
 
@@ -120,7 +130,7 @@ export default function Libro() {
         }
     }, [currentPath])
 
-    const elimnarMensaje = () => {
+    const eliminarMensaje = () => {
         setTimeout(() => {
             setMensaje(false);
         }, 5000);
@@ -131,33 +141,36 @@ export default function Libro() {
             <form className='row g-3 needs-validation text-start' onSubmit={handleSubmit}>
                 <div className='row'>
                     <div className="col-6">
-                        <Input label="Titulo:" type="text" name="titulo" value={titulo} onChange={({ target }) => setTitulo(target.value)} />
+                        <Input label="Titulo:" type="text" name="titulo" value={titulo} onChange={({ target }) => setTitulo(target.value)} desabilitar={nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
-                        <Input label="Autor:" type="text" name="autor" value={autor} onChange={({ target }) => setAutor(target.value)} />
+                        <Input label="Autor:" type="text" name="autor" value={autor} onChange={({ target }) => setAutor(target.value)} desabilitar={nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
-                        <Input label="Isbn 13:" type="text" name="isbn13" value={isbn13} onChange={({ target }) => setIsbn13(target.value)} />
+                        <Input label="Isbn 13:" type="text" name="isbn13" value={isbn13} onChange={({ target }) => setIsbn13(target.value)} desabilitar={nameButton === 'Editar' || nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
-                        <Input label="Isbn 10:" type="text" name="isbn10" value={isbn10} onChange={({ target }) => setIsbn10(target.value)} />
+                        <Input label="Isbn 10:" type="text" name="isbn10" value={isbn10} onChange={({ target }) => setIsbn10(target.value)} desabilitar={nameButton === 'Editar' || nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
-                        <Input label="Cantidad:" type="number" name="cantidad" value={cantidad} onChange={({ target }) => setCantidad(target.value)} />
+                        <Input label="Cantidad:" type="number" name="cantidad" value={cantidad} onChange={({ target }) => setCantidad(target.value)} desabilitar={nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
-                        <Input label="Año publicación:" type="number" name="anioPublicacion" value={anioPublicacion} onChange={({ target }) => setAnioPublicacion(target.value)} />
+                        <Input label="Año publicación:" type="number" name="anioPublicacion" value={anioPublicacion} onChange={({ target }) => setAnioPublicacion(target.value)} desabilitar={nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
                         <label htmlFor="sipnosis" className="form-label">Sipnosis:</label>
-                        <textarea className="form-control" id="sipnosis" rows="2" value={sipnosis} onChange={({ target }) => setSipnosis(target.value)} />
+                        {nameButton === 'Eliminar' ? <textarea className="form-control" id="sipnosis" rows="2" value={sipnosis} onChange={({ target }) => setSipnosis(target.value)} disabled /> :
+                            <textarea className="form-control" id="sipnosis" rows="2" value={sipnosis} onChange={({ target }) => setSipnosis(target.value)} />}
                     </div>
                     <div className="col-6">
                         <label htmlFor="editorial" className="form-label">Editorial:</label>
-                        <textarea className="form-control" id="editorial" rows="2" value={editorial} onChange={({ target }) => setEditorial(target.value)} />
+                        {nameButton === 'Eliminar' ? <textarea className="form-control" id="editorial" rows="2" value={editorial} onChange={({ target }) => setEditorial(target.value)} disabled /> :
+                            <textarea className="form-control" id="editorial" rows="2" value={editorial} onChange={({ target }) => setEditorial(target.value)} />
+                        }
                     </div>
                     <div className="col-6">
-                        <Input label="Imagen:" type="text" name="imagen" value={imagen} onChange={({ target }) => setImagen(target.value)} />
+                        <Input label="Imagen:" type="text" name="imagen" value={imagen} onChange={({ target }) => setImagen(target.value)} desabilitar={nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6"></div>
                     <div className="d-grid gap-2 col-6 mx-auto mt-4">
