@@ -31,7 +31,7 @@ export default function Menu() {
         }
         valor = sessionStorage.getItem("login") === 'true' ? true : false;
         setLogin(valor)
-    }, []);
+    }, [value]);
 
     return (
         <nav className="navbar bg-primary navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
@@ -46,7 +46,7 @@ export default function Menu() {
                             <a className="nav-link" href="/libro">Lista Libros</a>
                         </li>
                     </ul>
-                    <label className="nameUser" ><span > {value} </span><i class="bi bi-person-circle"></i></label>
+                    <label className="nameUser" ><span className='fw-semibold'> {value} </span></label>
                     <span className="navbar-text">
                         {logueado === true ?
                             <Boton type="submit"
