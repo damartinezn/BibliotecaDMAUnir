@@ -51,8 +51,7 @@ export const alquilarLibro = (isbn13Alquilar) => {
             librosRecuperados[index].cantidad = (librosRecuperados[index].cantidad - 1)
         }
     }
-    window.sessionStorage.removeItem('libros');
-    window.sessionStorage.setItem('libros', JSON.stringify(librosRecuperados));
+    actualizaSession();
 }
 
 export const agregarLibro = (titulo, autor, isbn13, isbn10,
@@ -62,8 +61,7 @@ export const agregarLibro = (titulo, autor, isbn13, isbn10,
         imagen, sipnosis, null, cantidad,
         anioPublicacion, null, editorial);
     librosRecuperados.push(auxLibri);
-    window.sessionStorage.removeItem('libros');
-    window.sessionStorage.setItem('libros', JSON.stringify(librosRecuperados));
+    actualizaSession();
 }
 
 export const editarLibro = (titulo, autor, isbn13, isbn10,
@@ -79,10 +77,15 @@ export const editarLibro = (titulo, autor, isbn13, isbn10,
             librosRecuperados[index] = auxLibri;
         }
     }
-    window.sessionStorage.removeItem('libros');
-    window.sessionStorage.setItem('libros', JSON.stringify(librosRecuperados));
+    actualizaSession();
 }
 
+export const eliminarLibro = (isbn13Buscar) => {
+    let libros = recuperarLibros();
+    librosRecuperados = libros !== undefined && libros !== null ? libros : librosRecuperados
+    librosRecuperados = librosRecuperados.filter(item => item.isbn13 !== isbn13Buscar);
+    actualizaSession();
+}
 
 const recuperarLibros = () => {
     let objetoJSON = window.sessionStorage.getItem('libros');
@@ -91,4 +94,9 @@ const recuperarLibros = () => {
         objeto = JSON.parse(objetoJSON);
     }
     return objeto
+}
+
+const actualizaSession=()=>{
+    window.sessionStorage.removeItem('libros');
+    window.sessionStorage.setItem('libros', JSON.stringify(librosRecuperados));
 }

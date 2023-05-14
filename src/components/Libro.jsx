@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
 import Input from './Input';
 import { useLocation, useNavigate, useParams } from 'react-router';
-import { agregarLibro, consultaLibrosByIsbn13, editarLibro } from '../services/LibrosService';
+import { agregarLibro, consultaLibrosByIsbn13, editarLibro, eliminarLibro } from '../services/LibrosService';
 import Alertas from './Alertas';
 import Imagen from './Imagen';
 
@@ -64,7 +64,13 @@ export default function Libro() {
                     }
                 }
             } else if (currentPath.indexOf('delete') !== -1) {
-                console.log('ELIMINAR');
+                try {
+                    eliminarLibro(isbn13);
+                    rutaEventosConLibro('/libro');
+                } catch (error) {
+                    setMensaje(true);
+                    setMensajeError('Ocurrió un error al eliminar el libro !!  ');
+                }
             } else if (currentPath.indexOf('/save') !== -1) {
                 if (validacionesForm()) {
                     try {
