@@ -28,5 +28,5 @@
 }
 
 .image-container:hover::after {
-    opacity: 1;
+    opacity: 5;
 }
