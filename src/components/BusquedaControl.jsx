@@ -19,11 +19,6 @@ export default function BusquedaControl() {
     const [selectorUno, setSelectorUno] = useState("");
     const [libros, setLibrosFiltrados] = useState([]);
 
-    const handleNameChange = (event) => {
-        setName(event.target.value);
-        event.preventDefault();
-    };
-
     const handleGenderChange = (event) => {
         setSelectorUno(event.target.value);
     };
@@ -44,7 +39,7 @@ export default function BusquedaControl() {
             <div className="text-start  mb-4  fw-bold shadow-lg p-3 bg-body-tertiary rounded border border-dark">
                 <div className="row align-items-center">
                     <div className="col">
-                        <Input label="Titulo:" type="text" name="titulo" value={nombre} onChange={handleNameChange} />
+                        <Input label="Titulo:" type="text" name="titulo" value={nombre} onChange={({target}) =>setName(target.value) } />
                     </div>
                     <div className="col-6">
                         <hr className='invisible' />

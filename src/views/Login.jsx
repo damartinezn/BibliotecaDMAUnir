@@ -6,7 +6,7 @@ import { consultaLoginUser } from '../services/LoginService';
 import { useNavigate } from 'react-router';
 import Alertas from '../components/Alertas';
 import '../styles/StyleImagen.css'
-import { GeoContext } from '../components/GeoContext';
+import { LibroContext } from '../components/LibroContext';
 
 export default function Login() {
     const [nombre, setName] = useState('');
@@ -15,7 +15,7 @@ export default function Login() {
     const [alerta, setAlerta] = useState(false);
     const [logueado, setLogin] = useState(false);
     let navigateLogin = useNavigate();
-    const { value, changeValue } = useContext(GeoContext);
+    const { value, changeValue } = useContext(LibroContext);
 
     const handleSubmit = (event) => {
         let auxLogin = consultaLoginUser(nombre, password, email);

@@ -1,11 +1,11 @@
 import { React, useContext, useEffect, useState } from 'react'
 import '../styles/StyleImagen.css';
 import Boton from '../components/Boton';
-import { GeoContext } from '../components/GeoContext';
+import { LibroContext } from '../components/LibroContext';
 
 export default function Menu() {
     const [logueado, setLogin] = useState(false);
-    const { value, changeValue } = useContext(GeoContext);
+    const { value, changeValue } = useContext(LibroContext);
 
     const handleLogout = (event) => {
         // Actualizar el estado de autenticación al hacer logout

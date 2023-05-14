@@ -7,13 +7,13 @@
             "editorial": "Plaza & Janes",
             "criticas": [
                 {
-                    "isbn": "17202020",
+                    "id": "1",
                     "usuario": "usuario1",
                     "puntuacion": 4.5,
                     "comentario": "Me encantó este libro, la historia es fascinante y los personajes muy bien desarrollados."
                 },
                 {
-                    "isbn": "17202020",
+                    "id": "2",
                     "usuario": "usuario2",
                     "puntuacion": 3,
                     "comentario": "No estuvo mal, pero esperaba algo más de la trama."
@@ -44,13 +44,13 @@
             "editorial": "Secker & Warburg",
             "criticas": [
                 {
-                    "isbn": "17202021",
+                    "id": "3",
                     "usuario": "usuario3",
                     "puntuacion": 5,
                     "comentario": "Obra maestra de la literatura distópica. Muy recomendada."
                 },
                 {
-                    "isbn": "17202021",
+                    "id": "4",
                     "usuario": "usuario4",
                     "puntuacion": 2,
                     "comentario": "No me gustó la narrativa, me resultó tediosa."
@@ -86,13 +86,13 @@
             "editorial": "Plaza & Janes",
             "criticas": [
                 {
-                    "isbn": "17202020",
+                    "id": "5",
                     "usuario": "usuario1",
                     "puntuacion": 4.5,
                     "comentario": "Me encantó este libro, la historia es fascinante y los personajes muy bien desarrollados."
                 },
                 {
-                    "isbn": "17202020",
+                    "id": "6",
                     "usuario": "usuario2",
                     "puntuacion": 3,
                     "comentario": "No estuvo mal, pero esperaba algo más de la trama."
@@ -118,13 +118,13 @@
             "editorial": "España",
             "criticas": [
                 {
-                    "isbn": "17202021",
+                    "id": "7",
                     "usuario": "usuario3",
                     "puntuacion": 5,
                     "comentario": "Obra maestra de la literatura distópica. Muy recomendada."
                 },
                 {
-                    "isbn": "17202021",
+                    "id": "8",
                     "usuario": "usuario4",
                     "puntuacion": 2,
                     "comentario": "No me gustó la narrativa, me resultó tediosa."
@@ -160,13 +160,13 @@
             "editorial": "Plaza & Janes",
             "criticas": [
                 {
-                    "isbn": "17202020",
+                    "id": "9",
                     "usuario": "usuario1",
                     "puntuacion": 4.5,
                     "comentario": "Me encantó este libro, la historia es fascinante y los personajes muy bien desarrollados."
                 },
                 {
-                    "isbn": "17202020",
+                    "id": "10",
                     "usuario": "usuario2",
                     "puntuacion": 3,
                     "comentario": "No estuvo mal, pero esperaba algo más de la trama."
@@ -197,13 +197,13 @@
             "editorial": "Secker & Warburg",
             "criticas": [
                 {
-                    "isbn": "17202021",
+                    "id": "12",
                     "usuario": "usuario3",
                     "puntuacion": 5,
                     "comentario": "Obra maestra de la literatura distópica. Muy recomendada."
                 },
                 {
-                    "isbn": "17202021",
+                    "id": "13",
                     "usuario": "usuario4",
                     "puntuacion": 2,
                     "comentario": "No me gustó la narrativa, me resultó tediosa."

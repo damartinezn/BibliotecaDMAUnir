@@ -1,6 +1,6 @@
 export class Critica {
-    constructor(isbn, usuario, calificacion, comentario) {
-        this.isbn = isbn;
+    constructor(id, usuario, calificacion, comentario) {
+        this.id = id;
         this.usuario = usuario;
         this.calificacion = calificacion;
         this.comentario = comentario;

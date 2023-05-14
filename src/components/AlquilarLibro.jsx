@@ -5,6 +5,7 @@ import { alquilarLibro, consultaLibrosByIsbn13 } from '../services/LibrosService
 import { NavLink } from 'react-router-dom';
 import Alertas from './Alertas';
 import Imagen from './Imagen';
+import Input from './Input';
 
 export default function AlquilarLibro() {
     const [titulo, setTitulo] = useState('');
@@ -18,6 +19,7 @@ export default function AlquilarLibro() {
     const [logueado, setLogin] = useState(false);
     const [mensajeDos, setMensajeDos] = useState(false);
     const [mensajeErrores, setMensajeErrores] = useState('');
+    const [alquilar, setCantidadAlquiler] = useState([]);
     let paramsEnviados = useParams();
     let navigateLogin = useNavigate();
 
@@ -93,6 +95,11 @@ export default function AlquilarLibro() {
                         <label htmlFor={sipnosis} className="form-label"><span className='fw-bolder'>Sipnosis: </span>{sipnosis}</label>
                         <div></div>
                         <label htmlFor={editorial} className="form-label"><span className='fw-bolder'>Editorial: </span>{editorial}</label>
+                        <div className='row'>
+                            <div className='col-6 fw-semibold'>
+                                <Input label="Días a alquilar:" type="number" name="canAlquiler" value={alquilar} onChange={({ target }) => setCantidadAlquiler(target.value)} />
+                            </div>
+                        </div>
                     </div>
                     <div className="col-6">
                         <Imagen ruta={imagen} alt={autor} clase='imagenAlquilar' />

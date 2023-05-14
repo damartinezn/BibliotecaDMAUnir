@@ -1,3 +1,4 @@
+import { Critica } from '../models/Critica';
 import { Libro } from '../models/Libro';
 const librosJson = require('../data/dataLibro.json');
 
@@ -39,7 +40,7 @@ export const consultaLibrosByIsbn13 = (isbn13Buscar) => {
     librosRecuperados = libros !== undefined && libros !== null ? libros : librosRecuperados
     return librosRecuperados.filter(item => item.isbn13 === isbn13Buscar).map(libro =>
         new Libro(libro.titulo, libro.autor, libro.isbn13, libro.isbn10,
-            libro.imagen, libro.sipnosis, libro.criticas, libro.cantidad,
+            libro.imagen, libro.sipnosis, libro.criticas.map(t => new Critica(t.id, t.usuario, t.calificacion, t.comentario)), libro.cantidad,
             libro.anioPublicacion, libro.genero, libro.editorial));
 }
 
