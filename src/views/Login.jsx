@@ -5,6 +5,7 @@ import Boton from '../components/Boton';
 import { consultaLoginUser } from '../services/LoginService';
 import { useNavigate } from 'react-router';
 import Alertas from '../components/Alertas';
+import '../styles/StyleImagen.css'
 
 export default function Login() {
     const [nombre, setName] = useState('');
@@ -25,7 +26,7 @@ export default function Login() {
         event.preventDefault();
     };
 
-    const handleSubmitLogout = (event) =>{
+    const handleSubmitLogout = (event) => {
         resetValores();
         sessionStorage.setItem('login', false);
         setLogin(!logueado);
@@ -53,15 +54,15 @@ export default function Login() {
     }
 
     useEffect(() => {
-        let valor = sessionStorage.getItem("login") === 'true' ? true: false;
+        let valor = sessionStorage.getItem("login") === 'true' ? true : false;
         setLogin(valor);
         setAlerta(valor);
-    },[])
+    }, [])
 
     const formLogueado = () => {
         return <div className='text-center row p-5'>
             <div className='col'>
-                <Imagen ruta='biblioteca.png' alt='imagen login' clase='img-fluid' />
+                <Imagen ruta='https://th.bing.com/th/id/R.6c4d2d1a3d833183859ae94febd4c211?rik=LlbqqScJdNXhOg&pid=ImgRaw&r=0' alt='imagen login' clase='imagenLogin' />
             </div>
             <div className='col'>
                 <form className='row g-3 needs-validation text-start' onSubmit={handleSubmit}>
@@ -80,7 +81,7 @@ export default function Login() {
     const formNotLogueado = () => {
         return <div className='text-center row p-5'>
             <div className='col'>
-                <Imagen ruta='biblioteca.png' alt='imagen login' clase='img-fluid' />
+                <Imagen ruta='https://th.bing.com/th/id/R.6c4d2d1a3d833183859ae94febd4c211?rik=LlbqqScJdNXhOg&pid=ImgRaw&r=0' alt='imagen login' clase='imagenLogin' />
             </div>
             <div className='col text-center text-'>
                 <form className='row g-3 needs-validation text-start' onSubmit={handleSubmitLogout}>
@@ -96,7 +97,7 @@ export default function Login() {
     return (
         <>
             {
-                logueado === false  ? formLogueado()
+                logueado === false ? formLogueado()
                     : formNotLogueado()
             }
         </>

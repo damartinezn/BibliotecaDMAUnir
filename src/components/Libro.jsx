@@ -2,8 +2,9 @@ import { React, useEffect, useState } from 'react'
 import Boton from './Boton';
 import Input from './Input';
 import { useLocation, useNavigate, useParams } from 'react-router';
-import { consultaLibrosByIsbn13 } from '../services/LibrosService';
+import { agregarLibro, consultaLibrosByIsbn13 } from '../services/LibrosService';
 import Alertas from './Alertas';
+import Imagen from './Imagen';
 
 export default function Libro() {
     const [titulo, setTitulo] = useState('');
@@ -12,14 +13,17 @@ export default function Libro() {
     const [isbn10, setIsbn10] = useState('');
     const [sipnosis, setSipnosis] = useState('');
     const [cantidad, setCantidad] = useState('');
+    const [imagen, setImagen] = useState('');
     const [anioPublicacion, setAnioPublicacion] = useState('');
     const [editorial, setEditorial] = useState('');
     const [nameButton, setButton] = useState('GUARDAR');
+    const [mensajeError, setMensajeError] = useState('');
     const [logueado, setLogin] = useState(false);
     const [mensaje, setMensaje] = useState(false);
+    let rutaEventosConLibro = useNavigate();
 
     useEffect(() => {
-        let valor = sessionStorage.getItem("login") === 'true' ? true: false;
+        let valor = sessionStorage.getItem("login") === 'true' ? true : false;
         setLogin(valor)
     }, []);
 
@@ -39,28 +43,59 @@ export default function Libro() {
             setCantidad(auxLibro[0].cantidad);
             setAnioPublicacion(auxLibro[0].anioPublicacion);
             setEditorial(auxLibro[0].editorial);
+            setImagen(auxLibro[0].imagen);
         } else {
             valorNulos();
         }
-        cambiarNameButton();
     }, [paramsEnviados]);
 
     const handleSubmit = (event) => {
-        
         if (currentPath && logueado) {
             if (currentPath.indexOf('edit') !== -1) {
                 console.log('EDITAR');
             } else if (currentPath.indexOf('delete') !== -1) {
                 console.log('ELIMINAR');
             } else if (currentPath.indexOf('/save') !== -1) {
-                console.log('GUARDAR');
+                if (validacionesForm()) {
+                    try {
+                        agregarLibro(titulo, autor, isbn13, isbn10,
+                            imagen, sipnosis, parseInt(cantidad),
+                            parseInt(anioPublicacion), editorial);
+                        rutaEventosConLibro('/libro');
+                    } catch (error) {
+                        setMensaje(true);
+                        setMensajeError('Ocurrió un error al agregar el libro !!  ');
+                    }
+                }
             }
         }
         if (!logueado) {
             setMensaje(true);
+            setMensajeError('No inició sesión para agregar nuevos libros !!  ');
         }
+        elimnarMensaje();
         event.preventDefault();
     };
+
+    const validacionesForm = () => {
+        let retornar = true;
+        if (!imagen.includes('http')) {
+            setMensajeError('Debe ingresar una url con la portada del libro !!! ');
+            setMensaje(true);
+            retornar = false;
+        }
+        if (parseInt(cantidad) <= 0) {
+            setMensajeError('Debe ingresar una cantidad que sea mayor a cero !!! ');
+            setMensaje(true);
+            retornar = false;
+        }
+        if (parseInt(anioPublicacion) <= 1000) {
+            setMensajeError('Debe ingresar un año que sea mayor a mil !!! ');
+            setMensaje(true);
+            retornar = false;
+        }
+        return retornar;
+    }
 
     const valorNulos = () => {
         setTitulo("");
@@ -73,7 +108,7 @@ export default function Libro() {
         setEditorial("");
     }
 
-    const cambiarNameButton = () => {
+    useEffect(() => {
         if (currentPath) {
             if (currentPath.indexOf('edit') !== -1) {
                 setButton('Editar');
@@ -83,6 +118,12 @@ export default function Libro() {
                 setButton('Guardar');
             }
         }
+    }, [currentPath])
+
+    const elimnarMensaje = () => {
+        setTimeout(() => {
+            setMensaje(false);
+        }, 5000);
     }
 
     return (
@@ -102,10 +143,10 @@ export default function Libro() {
                         <Input label="Isbn 10:" type="text" name="isbn10" value={isbn10} onChange={({ target }) => setIsbn10(target.value)} />
                     </div>
                     <div className="col-6">
-                        <Input label="Cantidad:" type="text" name="cantidad" value={cantidad} onChange={({ target }) => setCantidad(target.value)} />
+                        <Input label="Cantidad:" type="number" name="cantidad" value={cantidad} onChange={({ target }) => setCantidad(target.value)} />
                     </div>
                     <div className="col-6">
-                        <Input label="Año publicación:" type="text" name="anioPublicacion" value={anioPublicacion} onChange={({ target }) => setAnioPublicacion(target.value)} />
+                        <Input label="Año publicación:" type="number" name="anioPublicacion" value={anioPublicacion} onChange={({ target }) => setAnioPublicacion(target.value)} />
                     </div>
                     <div className="col-6">
                         <label htmlFor="sipnosis" className="form-label">Sipnosis:</label>
@@ -115,17 +156,24 @@ export default function Libro() {
                         <label htmlFor="editorial" className="form-label">Editorial:</label>
                         <textarea className="form-control" id="editorial" rows="2" value={editorial} onChange={({ target }) => setEditorial(target.value)} />
                     </div>
+                    <div className="col-6">
+                        <Input label="Imagen:" type="text" name="imagen" value={imagen} onChange={({ target }) => setImagen(target.value)} />
+                    </div>
+                    <div className="col-6"></div>
                     <div className="d-grid gap-2 col-6 mx-auto mt-4">
-                        <Boton type="submit" label={nameButton} clase={nameButton == 'Guardar' ? 'btn btn-sm btn-secondary' : nameButton == 'Editar' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'}></Boton>
+                        <Boton type="submit" label={nameButton} clase={nameButton === 'Guardar' ? 'btn btn-sm btn-secondary' : nameButton === 'Editar' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'}></Boton>
                     </div>
                 </div>
             </form>
             {
-                mensaje ? <Alertas clase='alert alert-warning m-2 p-1' mensaje='No inició sesión  !! '></Alertas> : <></>
+                mensaje ? <Alertas clase='alert alert-warning m-2 p-1' mensaje={mensajeError}></Alertas> : <></>
             }
             <div className="d-grid gap-2 col-2 mt-4">
                 <Boton type="close" label="Cancelar" clase='btn btn-sm btn-primary' onClick={() => navigateClose("/libro")}></Boton>
             </div>
+            {
+                imagen !== undefined && imagen.length > 0 ? <Imagen ruta={imagen} alt={autor} clase='imagenAlquilar'></Imagen> : <></>
+            }
         </div>
     )
 }

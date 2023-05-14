@@ -34,6 +34,7 @@ export default function BusquedaControl() {
             let libAux = consultaLibrosNombre(nombre);
             setLibrosFiltrados(libAux);
             setContador(contador + 1)
+            setTimeout(()=>{setContador(0)},1000)
         }
         event.preventDefault();
     }
