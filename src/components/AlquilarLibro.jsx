@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import Alertas from './Alertas';
 import Imagen from './Imagen';
 import Input from './Input';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 export default function AlquilarLibro() {
     const [titulo, setTitulo] = useState('');
@@ -22,6 +23,7 @@ export default function AlquilarLibro() {
     const [alquilar, setCantidadAlquiler] = useState([]);
     let paramsEnviados = useParams();
     let navigateLogin = useNavigate();
+    const [libroStorage, setlibroStorage] = useSessionStorage('libros', []);
 
     useEffect(() => {
         let valor = sessionStorage.getItem("login") === 'true' ? true : false;
@@ -31,7 +33,7 @@ export default function AlquilarLibro() {
     useEffect(() => {
         if (paramsEnviados !== undefined && paramsEnviados.item !== undefined) {
             try {
-                let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item);
+                let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item, libroStorage);
                 setTitulo(auxLibro[0].titulo);
                 setAutor(auxLibro[0].autor);
                 setIsbn13(auxLibro[0].isbn13);
@@ -39,6 +41,7 @@ export default function AlquilarLibro() {
                 setCantidad(auxLibro[0].cantidad);
                 setEditorial(auxLibro[0].editorial);
                 setImagen(auxLibro[0].imagen)   
+                setlibroStorage(libroStorage)
             } catch (error) {
                 navigateLogin('/');   
             }
@@ -69,6 +72,9 @@ export default function AlquilarLibro() {
         } else {
             setMensajeErrores('No se tiene el libro en stock para alquilar, le invitamos a seleccionar otra opción ...');
             setMensaje(false);
+            setTimeout(() => {
+                navigateLogin("/");
+            }, 1000);
         }
         event.preventDefault();
     };

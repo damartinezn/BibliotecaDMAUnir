@@ -1,13 +1,15 @@
 import { React, useState, useEffect } from 'react'
 import CardItem from './CardItem'
-import { consultaLibros } from '../services/LibrosService';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 export default function Card(props) {
     const [libros, setLibros] = useState([]);
+    const [libroStorage, setlibroStorage] = useSessionStorage('libros', []);
 
     useEffect(() => {
         if(Object.keys(props.libros).length ===  0 || Object.keys(props.libros).length ===  undefined){
-            setLibros(consultaLibros)
+            setLibros(libroStorage)
+            setlibroStorage(libroStorage)
         }else{
             setLibros([])
             setLibros(props.libros);

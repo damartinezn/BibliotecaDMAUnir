@@ -1,15 +1,16 @@
 import { React, useState, useEffect } from 'react'
-import { consultaLibros } from '../services/LibrosService';
 import Boton from './Boton';
 import { useNavigate } from 'react-router';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 export default function Libros() {
     const [libros, setLibros] = useState([]);
     let navigateEditLibro = useNavigate();
     let navigateNewLibro = useNavigate();
+    const [libroStorage, setibroStorage] = useSessionStorage('libros', []);
 
     useEffect(() => {
-        setLibros(consultaLibros)
+        setLibros(libroStorage)
     }, []);
 
     const handleEditNavigation = ( item) => {

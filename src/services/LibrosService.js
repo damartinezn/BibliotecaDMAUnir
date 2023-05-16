@@ -1,10 +1,10 @@
-import { Critica } from '../models/Critica';
 import { Libro } from '../models/Libro';
 const librosJson = require('../data/dataLibro.json');
 
 let librosRecuperados = librosJson.libros;
 let leer = window.sessionStorage.getItem('libros')
-if (leer === undefined) {
+
+if (leer === undefined || leer === null) {
     window.sessionStorage.setItem('libros', JSON.stringify(librosRecuperados));
 }
 
@@ -20,10 +20,7 @@ export const consultaLibros = () => {
 export const consultaLibrosNombre = (nombreBuscar) => {
     let libros = recuperarLibros();
     librosRecuperados = libros !== undefined && libros !== null ? libros : librosRecuperados
-    return librosRecuperados.filter(item => item.titulo.toLowerCase().includes(nombreBuscar.toLowerCase())).map(libro =>
-        new Libro(libro.titulo, libro.autor, libro.isbn13, libro.isbn10,
-            libro.imagen, libro.sipnosis, libro.criticas, libro.cantidad,
-            libro.anioPublicacion, libro.genero, libro.editorial));
+    return librosRecuperados.filter(item => item.titulo.toLowerCase().includes(nombreBuscar.toLowerCase()));
 }
 
 export const filtraCategoriaLibros = () => {
@@ -35,13 +32,9 @@ export const filtraCategoriaLibros = () => {
     });
 }
 
-export const consultaLibrosByIsbn13 = (isbn13Buscar) => {
-    let libros = recuperarLibros();
-    librosRecuperados = libros !== undefined && libros !== null ? libros : librosRecuperados
-    return librosRecuperados.filter(item => item.isbn13 === isbn13Buscar).map(libro =>
-        new Libro(libro.titulo, libro.autor, libro.isbn13, libro.isbn10,
-            libro.imagen, libro.sipnosis, libro.criticas.map(t => new Critica(t.id, t.usuario, t.calificacion, t.comentario)), libro.cantidad,
-            libro.anioPublicacion, libro.genero, libro.editorial));
+export const consultaLibrosByIsbn13 = (isbn13Buscar, librosStorage) => {
+    
+    return librosStorage.filter(item => item.isbn13 === isbn13Buscar);
 }
 
 export const alquilarLibro = (isbn13Alquilar) => {
@@ -56,36 +49,37 @@ export const alquilarLibro = (isbn13Alquilar) => {
 }
 
 export const agregarLibro = (titulo, autor, isbn13, isbn10,
-    imagen, sipnosis, cantidad,
-    anioPublicacion, editorial) => {
+    imagen, sipnosis, cantidad, anioPublicacion, editorial, libroStorage) => {
+    
     let auxLibri = new Libro(titulo, autor, isbn13, isbn10,
         imagen, sipnosis, null, cantidad,
         anioPublicacion, null, editorial);
-    librosRecuperados.push(auxLibri);
-    actualizaSession();
+    return [...libroStorage, auxLibri];
+    
 }
 
 export const editarLibro = (titulo, autor, isbn13, isbn10,
     imagen, sipnosis, cantidad,
-    anioPublicacion, editorial, isbn13Editar) => {
-    let libros = recuperarLibros();
+    anioPublicacion, editorial, isbn13Editar, libroStorage) => {
+    
     let auxLibri = new Libro(titulo, autor, isbn13, isbn10,
         imagen, sipnosis, null, cantidad,
         anioPublicacion, null, editorial);
-    librosRecuperados = libros !== undefined && libros !== null ? libros : librosRecuperados
-    for (let index = 0; index < librosRecuperados.length; index++) {
-        if (librosRecuperados[index].isbn13 === isbn13Editar) {
-            librosRecuperados[index] = auxLibri;
+    
+    for (let index = 0; index < libroStorage.length; index++) {
+        if (libroStorage[index].isbn13 === isbn13Editar) {
+            libroStorage[index] = auxLibri;
         }
     }
-    actualizaSession();
+    return libroStorage
+    
 }
 
-export const eliminarLibro = (isbn13Buscar) => {
-    let libros = recuperarLibros();
-    librosRecuperados = libros !== undefined && libros !== null ? libros : librosRecuperados
-    librosRecuperados = librosRecuperados.filter(item => item.isbn13 !== isbn13Buscar);
-    actualizaSession();
+export const eliminarLibro = (isbn13Buscar, librosStorage) => {
+    
+    librosStorage = librosStorage.filter(item => item.isbn13 !== isbn13Buscar);
+    return librosStorage
+    
 }
 
 const recuperarLibros = () => {
@@ -97,7 +91,7 @@ const recuperarLibros = () => {
     return objeto
 }
 
-const actualizaSession=()=>{
+const actualizaSession = () => {
     window.sessionStorage.removeItem('libros');
     window.sessionStorage.setItem('libros', JSON.stringify(librosRecuperados));
 }

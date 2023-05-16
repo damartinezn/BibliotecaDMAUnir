@@ -5,6 +5,7 @@ import { useLocation, useNavigate, useParams } from 'react-router';
 import { agregarLibro, consultaLibrosByIsbn13, editarLibro, eliminarLibro } from '../services/LibrosService';
 import Alertas from './Alertas';
 import Imagen from './Imagen';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 export default function Libro() {
     const [titulo, setTitulo] = useState('');
@@ -21,6 +22,7 @@ export default function Libro() {
     const [logueado, setLogin] = useState(false);
     const [mensaje, setMensaje] = useState(false);
     let rutaEventosConLibro = useNavigate();
+    const [libroStorage, setlibroStorage] = useSessionStorage('libros', []);
 
     useEffect(() => {
         let valor = sessionStorage.getItem("login") === 'true' ? true : false;
@@ -35,7 +37,7 @@ export default function Libro() {
     useEffect(() => {
         if (paramsEnviados !== undefined && paramsEnviados.item !== undefined) {
             try {
-                let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item);
+                let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item, libroStorage);
                 setTitulo(auxLibro[0].titulo);
                 setAutor(auxLibro[0].autor);
                 setIsbn13(auxLibro[0].isbn13);
@@ -58,9 +60,10 @@ export default function Libro() {
             if (currentPath.indexOf('edit') !== -1) {
                 if (validacionesForm()) {
                     try {
-                        editarLibro(titulo, autor, isbn13, isbn10,
+                        let libroEditado = editarLibro(titulo, autor, isbn13, isbn10,
                             imagen, sipnosis, parseInt(cantidad),
-                            parseInt(anioPublicacion), editorial, isbn13);
+                            parseInt(anioPublicacion), editorial, isbn13, libroStorage);
+                        setlibroStorage(libroEditado)
                         rutaEventosConLibro('/libro');
                     } catch (error) {
                         setMensaje(true);
@@ -69,7 +72,8 @@ export default function Libro() {
                 }
             } else if (currentPath.indexOf('delete') !== -1) {
                 try {
-                    eliminarLibro(isbn13);
+                    let eliminado = eliminarLibro(isbn13, libroStorage);
+                    setlibroStorage(eliminado)
                     rutaEventosConLibro('/libro');
                 } catch (error) {
                     setMensaje(true);
@@ -78,9 +82,10 @@ export default function Libro() {
             } else if (currentPath.indexOf('/save') !== -1) {
                 if (validacionesForm()) {
                     try {
-                        agregarLibro(titulo, autor, isbn13, isbn10,
+                        let librosGuardar = agregarLibro(titulo, autor, isbn13, isbn10,
                             imagen, sipnosis, parseInt(cantidad),
-                            parseInt(anioPublicacion), editorial);
+                            parseInt(anioPublicacion), editorial, libroStorage);
+                        setlibroStorage(librosGuardar)
                         rutaEventosConLibro('/libro');
                     } catch (error) {
                         setMensaje(true);
