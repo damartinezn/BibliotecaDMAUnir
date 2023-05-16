@@ -12,7 +12,7 @@ export default function AlquilarLibro() {
     const [titulo, setTitulo] = useState('');
     const [autor, setAutor] = useState('');
     const [isbn13, setIsbn13] = useState('');
-    const [sipnosis, setSipnosis] = useState('');
+    const [sinopsis, setSipnosis] = useState('');
     const [cantidad, setCantidad] = useState('');
     const [imagen, setImagen] = useState('');
     const [editorial, setEditorial] = useState('');
@@ -102,7 +102,7 @@ export default function AlquilarLibro() {
                         <div></div>
                         <label htmlFor={cantidad} className="form-label"><span className={cantidad === 0 ? 'fw-bolder text-danger' : 'fw-bolder'}>Disponible: {cantidad}</span></label>
                         <div></div>
-                        <label htmlFor={sipnosis} className="form-label"><span className='fw-bolder'>Sipnosis: </span>{sipnosis}</label>
+                        <label htmlFor={sinopsis} className="form-label"><span className='fw-bolder'>Sinopsis: </span>{sinopsis}</label>
                         <div></div>
                         <label htmlFor={editorial} className="form-label"><span className='fw-bolder'>Editorial: </span>{editorial}</label>
                         <div className='row'>

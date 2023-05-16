@@ -12,7 +12,7 @@ export default function Libro() {
     const [autor, setAutor] = useState('');
     const [isbn13, setIsbn13] = useState('');
     const [isbn10, setIsbn10] = useState('');
-    const [sipnosis, setSipnosis] = useState('');
+    const [sinopsis, setSipnosis] = useState('');
     const [cantidad, setCantidad] = useState('');
     const [imagen, setImagen] = useState('');
     const [anioPublicacion, setAnioPublicacion] = useState('');
@@ -61,7 +61,7 @@ export default function Libro() {
                 if (validacionesForm()) {
                     try {
                         let libroEditado = editarLibro(titulo, autor, isbn13, isbn10,
-                            imagen, sipnosis, parseInt(cantidad),
+                            imagen, sinopsis, parseInt(cantidad),
                             parseInt(anioPublicacion), editorial, isbn13, libroStorage);
                         setlibroStorage(libroEditado)
                         rutaEventosConLibro('/libro');
@@ -83,7 +83,7 @@ export default function Libro() {
                 if (validacionesForm()) {
                     try {
                         let librosGuardar = agregarLibro(titulo, autor, isbn13, isbn10,
-                            imagen, sipnosis, parseInt(cantidad),
+                            imagen, sinopsis, parseInt(cantidad),
                             parseInt(anioPublicacion), editorial, libroStorage);
                         setlibroStorage(librosGuardar)
                         rutaEventosConLibro('/libro');
@@ -174,9 +174,9 @@ export default function Libro() {
                         <Input label="Año publicación:" type="number" name="anioPublicacion" value={anioPublicacion} onChange={({ target }) => setAnioPublicacion(target.value)} desabilitar={nameButton === 'Eliminar' ? true : undefined} />
                     </div>
                     <div className="col-6">
-                        <label htmlFor="sipnosis" className="form-label">Sipnosis:</label>
-                        {nameButton === 'Eliminar' ? <textarea className="form-control" id="sipnosis" rows="2" value={sipnosis} onChange={({ target }) => setSipnosis(target.value)} disabled /> :
-                            <textarea className="form-control" id="sipnosis" rows="2" value={sipnosis} onChange={({ target }) => setSipnosis(target.value)} />}
+                        <label htmlFor="sinopsis" className="form-label">Sinopsis:</label>
+                        {nameButton === 'Eliminar' ? <textarea className="form-control" id="sinopsis" rows="2" value={sinopsis} onChange={({ target }) => setSipnosis(target.value)} disabled /> :
+                            <textarea className="form-control" id="sinopsis" rows="2" value={sinopsis} onChange={({ target }) => setSipnosis(target.value)} />}
                     </div>
                     <div className="col-6">
                         <label htmlFor="editorial" className="form-label">Editorial:</label>
