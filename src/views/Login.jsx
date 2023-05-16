@@ -18,7 +18,7 @@ export default function Login() {
     const { value, changeValue } = useContext(LibroContext);
 
     const handleSubmit = (event) => {
-        let auxLogin = consultaLoginUser(nombre, password, email);
+        let auxLogin = consultaLoginUser(nombre, password);
         try { 
             Object.keys(auxLogin).length > 0 ? isUser() : notIsUser();
             changeValue(auxLogin[0].nombre);
@@ -74,7 +74,6 @@ export default function Login() {
             <div className='col'>
                 <form className='row g-3 needs-validation text-start' onSubmit={handleSubmit}>
                     <Input label="Username:" type="text" name="Username" value={nombre} onChange={({ target }) => setName(target.value)} />
-                    <Input label="Correo:" type="email" name="Correo" value={email} onChange={({ target }) => setEmail(target.value)} />
                     <Input label="Contraseña:" type="password" name="Contraseña" value={password} onChange={({ target }) => setPassword(target.value)} />
                     <Boton type="submit" label="Enviar" clase='btn btn-primary'></Boton>
                 </form>
