@@ -30,14 +30,18 @@ export default function AlquilarLibro() {
 
     useEffect(() => {
         if (paramsEnviados !== undefined && paramsEnviados.item !== undefined) {
-            let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item);
-            setTitulo(auxLibro[0].titulo);
-            setAutor(auxLibro[0].autor);
-            setIsbn13(auxLibro[0].isbn13);
-            setSipnosis(auxLibro[0].sipnosis);
-            setCantidad(auxLibro[0].cantidad);
-            setEditorial(auxLibro[0].editorial);
-            setImagen(auxLibro[0].imagen)
+            try {
+                let auxLibro = consultaLibrosByIsbn13(paramsEnviados.item);
+                setTitulo(auxLibro[0].titulo);
+                setAutor(auxLibro[0].autor);
+                setIsbn13(auxLibro[0].isbn13);
+                setSipnosis(auxLibro[0].sipnosis);
+                setCantidad(auxLibro[0].cantidad);
+                setEditorial(auxLibro[0].editorial);
+                setImagen(auxLibro[0].imagen)   
+            } catch (error) {
+                navigateLogin('/');   
+            }
         } else {
             valorNulos();
         }

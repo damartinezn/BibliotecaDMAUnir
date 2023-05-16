@@ -13,10 +13,10 @@ export const BibliotecaRouter = () => {
             <Routes>
                 <Route exact path="/" element={<Busqueda />} />
                 <Route exact path="/libro" element={<ListaLibros />} />
-                <Route exact path="/libro/save" element={<Libro />} />
+                <Route exact path="/save" element={<Libro />} />
                 <Route exact path="/libro/edit/:item" element={<Libro />} />
                 <Route exact path="/libro/delete/:item" element={<Libro />} />
-                <Route exact path="/libro/:item" element={<AlquilarLibro />} />
+                <Route exact path="/libro/:item" element={<AlquilarLibro />} /> 
                 <Route caseSensitive path="/login/" element={<Login />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>

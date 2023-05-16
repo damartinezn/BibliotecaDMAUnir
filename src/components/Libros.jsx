@@ -27,7 +27,7 @@ export default function Libros() {
     return (
         <>
             <div className='text-start'>
-                <Boton type="submit" label="Nuevo" clase='btn btn-primary' onClick={() => navigateNewLibro("/libro/save")}></Boton>
+                <Boton type="submit" label="Nuevo" clase='btn btn-primary' onClick={() => navigateNewLibro("/save")}></Boton>
             </div>
             <table className="table">
                 <thead>
